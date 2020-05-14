@@ -1,0 +1,54 @@
+.tools {
+    position: relative;
+}
+
+.tools ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tools ul li {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #888;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.tools ul li:first-child {
+    border-top-right-radius: 5px;
+}
+
+.tools ul li:last-child {
+    border-bottom: 1px solid #888;
+    border-bottom-right-radius: 5px;
+}
+
+.tools ul li.active {
+    color: #2196f3;
+    border-color: #2196f3;
+    border-bottom: 1px solid #2196f3;
+}
+
+.tools ul li.active + li {
+    border-top: none;
+}
+
+.tools .color-popover {
+    position: absolute !important;
+    top: 200px;
+    left: -68px;
+    z-index: 99;
+}
+
+.tools .color-popover .color-popover-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
