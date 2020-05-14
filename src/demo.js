@@ -17,10 +17,10 @@ const Demo = () => {
             mousedown = false;
 
         function getEventCoord(e) {
+            const offsetTop = 36;
+
             const x = e.clientX - canvasboundingRect.left;
-            const y = e.clientY - canvasboundingRect.top;
-            // const x = e.clientX - canvas.offsetLeft;
-            // const y = e.clientY - canvas.offsetTop;
+            const y = e.clientY - canvasboundingRect.top + offsetTop;
             return [x, y];
         }
 
