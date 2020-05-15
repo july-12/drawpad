@@ -17,10 +17,10 @@ const Demo = () => {
             mousedown = false;
 
         function getEventCoord(e) {
-            const offsetTop = 36;
+            // const offsetTop = 36;
 
             const x = e.clientX - canvasboundingRect.left;
-            const y = e.clientY - canvasboundingRect.top + offsetTop;
+            const y = e.clientY - canvasboundingRect.top;
             return [x, y];
         }
 
@@ -57,7 +57,15 @@ const Demo = () => {
                 <h3>A drawpad by canvas</h3>
                 <canvas ref={ref} width={600} height={300} style={{ background: 'purple' }} />
             </section>
-            <Tools ref={toolRef} />
+            <Tools
+                ref={toolRef}
+                onClear={() => {
+                    const canvas = ref.current;
+                    const boundingRect = canvas.getBoundingClientRect();
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, boundingRect.width, boundingRect.height);
+                }}
+            />
         </div>
     );
 };

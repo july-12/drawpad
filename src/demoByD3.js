@@ -6,6 +6,8 @@ const DemoByD3 = () => {
     const ref = useRef(null);
     const toolRef = useRef(null);
     const backgroundColor = '#ddffdd';
+    let lineIndex = 0;
+    let lines = [];
 
     useEffect(() => {
         const base = d3.select(ref.current);
@@ -16,10 +18,7 @@ const DemoByD3 = () => {
             .attr('style', `background: ${backgroundColor}`);
 
         const ctx = canvas.node().getContext('2d');
-
         let mousedown = false;
-        let lineIndex = 0;
-        let lines = [];
 
         const linePath = d3
             .line()
@@ -101,7 +100,17 @@ const DemoByD3 = () => {
                 <h3>A drawpad by canvas with d3</h3>
                 <div className="wrapper" ref={ref}></div>
             </section>
-            <Tools ref={toolRef} />
+            <Tools
+                ref={toolRef}
+                onClear={() => {
+                    const canvas = ref.current.firstChild;
+                    const boundingRect = canvas.getBoundingClientRect();
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, boundingRect.width, boundingRect.height);
+                    lines = [];
+                    lineIndex = 0;
+                }}
+            />
         </div>
     );
 };

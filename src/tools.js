@@ -65,7 +65,11 @@ const Tools = (props, ref) => {
                 <li onClick={toggleColor}>
                     <i className="drawpad-confont iconyanse"></i>
                 </li>
-                <li>
+                <li
+                    onClick={() => {
+                        typeof props.onClear === 'function' && props.onClear();
+                    }}
+                >
                     <i className="drawpad-confont iconqingchu1"></i>
                 </li>
                 <li>
